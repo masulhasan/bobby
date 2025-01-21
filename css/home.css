@@ -394,6 +394,7 @@ body::after {
     font-size: 9px;
     font-family: "Archia Light";
     font-weight: 400;
+    gap: 8px;
   }
 }
 
