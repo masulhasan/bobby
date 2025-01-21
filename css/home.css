@@ -209,6 +209,10 @@ body::after {
   }
 }
 
+.logo:hover{
+  color: #000000;
+}
+
 .nav {
   display: flex;
   gap: 20px;

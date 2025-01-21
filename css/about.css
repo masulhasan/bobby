@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial,
-    sans-serif, "Archia Bold", "Metric Light";
+    sans-serif, "Archia Bold", "Archia Regular", "Metric Light";
 }
 
 @font-face {
@@ -20,11 +20,95 @@
 }
 
 @font-face {
+  font-family: "Archia Regular";
+  src: url("../Fonts/Archia_Font_Web/03.Archia-Regular-webfont/archia-regular-webfont.eot");
+  src: url("../Fonts/Archia_Font_Web/03.Archia-Regular-webfont/archia-regular-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("../Fonts/Archia_Font_Web/03.Archia-Regular-webfont/archia-regular-webfont.woff")
+      format("woff"),
+    url("../Fonts/Archia_Font_Web/03.Archia-Regular-webfont/archia-regular-webfont.ttf")
+      format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Archia Light";
+  src: url("../Fonts/Archia_Font_Web/02.Archia-Light-webfont/archia-light-webfont.eot");
+  src: url("../Fonts/Archia_Font_Web/02.Archia-Light-webfont/archia-light-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("../Fonts/Archia_Font_Web/02.Archia-Light-webfont/archia-light-webfont.woff")
+      format("woff"),
+    url("../Fonts/Archia_Font_Web/02.Archia-Light-webfont/archia-light-webfont.ttf")
+      format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@font-face {
   font-family: "Metric Light";
   src: url("../Fonts/Metric_font/Metric-Light.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  font-family: "Metric Light";
+
+  position: relative;
+  background-image: url("../img/HeaderBG/header-bg.png"),
+    url("../img/FooterBG/79521629693dde3f1d06f4e891475322.png");
+  background-size: 100%, 100%;
+  background-position: center -2%, center 91.65%;
+  background-repeat: no-repeat, no-repeat;
+}
+
+@media (max-width: 780px) {
+  body {
+    background-position: center 1px, center 91.65%;
+  }
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 15%; /* Start 50px down */
+  left: 0;
+  right: 0;
+  bottom: 0; /* Extend to the bottom */
+  background-color: #f1f2f8; /* Example: light white with some transparency */
+  z-index: -1; /* Ensure it stays behind other content */
+}
+
+@media (max-width: 780px){
+  body::before{
+    top: 3%;
+  }
+}
+
+
+body::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../img/CenterBodyBg/midbg.png");
+  background-size: 100%;
+  background-position: center 18%;
+  background-repeat: no-repeat;
+  z-index: -1; /* Ensure it stays behind other content */
+  opacity: 20%;
+}
+
+/* Hover Effect Start */
 
 .hover-circle {
   position: fixed;
@@ -35,8 +119,8 @@
   transition: width 0.3s, height 0.3s;
   transform: translate(-50%, -50%);
   z-index: 1000;
-  mix-blend-mode: difference;
-  background: #fff;
+  mix-blend-mode: difference; /* This creates the negative effect */
+  background: #fff; /* White circle for inverse effect */
 }
 
 .portfolio-item {
@@ -44,20 +128,14 @@
   overflow: hidden;
 }
 
-.portfolio-item video {
+.portfolio-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  
+  transition: transform 0.3s ease;
 }
 
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: 0 20px;
-  font-family: "Metric Light";
-}
+/* Hover Effect End */
 
 /* Header */
 
@@ -69,20 +147,29 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding-top: 2.8%;
-  padding-bottom: 2.8%;
   font-size: 20px;
   font-family: "Metric Light";
   max-width: 1600px;
   width: 86%;
 }
 
+/* Update the media query breakpoint and maintain consistent spacing */
+@media (max-width: 1280px) {
+  .header {
+    width: 86%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2.8%;
+    padding-bottom: 2.8%;
+    font-size: 18px;
+  }
+}
+
 /* Header Tablet */
 @media (max-width: 1280px) {
   .header {
     padding: 20px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 86%;
     margin-left: auto;
     margin-right: auto;
     padding-top: 2%;
@@ -109,7 +196,7 @@ body {
 
 .logo {
   font-size: 1.2rem;
-  color: #3C096C;
+  color: #3c096c;
   text-decoration: none;
   font-family: "Archia Bold", sans-serif;
 }
@@ -117,31 +204,39 @@ body {
 @media (max-width: 1280px) {
   .logo {
     font-size: 15px;
-    color: #333;
+    color: #3c096c;
     text-decoration: none;
   }
 }
 @media (max-width: 767px) {
   .logo {
     font-size: 15px;
-    color: #333;
+    color: #3c096c;
     text-decoration: none;
   }
+}
+
+.logo:hover{
+  color: #000000;
 }
 
 .nav {
   display: flex;
   gap: 20px;
-  font-family: "Metric Light";
+  font-family: "Archia Regular";
   font-size: 1.5rem;
+  color: #1F2937;
+  font-weight: 400;
 }
 
 @media (max-width: 1280px) {
   .nav {
     display: flex;
     gap: 20px;
-    font-family: "Metric Light";
+    font-family: "Archia Regular";
     font-size: 15px;
+    color: #1F2937;
+    font-weight: 400;
   }
 }
 
@@ -149,28 +244,36 @@ body {
   .nav {
     display: flex;
     gap: 20px;
-    font-family: "Metric Light";
+    font-family: "Archia Regular";
     font-size: 15px;
+    color: #1F2937;
+    font-weight: 400;
   }
 }
 
 .nav a {
   text-decoration: none;
   color: #333;
-  font-family: "Metric Light";
+  font-family: "Archia Regular";
+  color: #1F2937;
+  font-weight: 400;
+}
+
+.nav a:hover{
+  color: #3C096C;
+  font-weight: 600;
 }
 
 .portfolio-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
   width: 86%;
   padding-bottom: 100px;
-
-  /* Added spacing before footer */
+  padding-top: 1%;
 }
 
 .portfolio-grid {
@@ -178,7 +281,6 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   width: 100%;
-  justify-content: center;
 }
 
 .portfolio-section {
@@ -190,18 +292,17 @@ body {
 .portfolio-additional {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 30px;
   width: 100%;
   max-width: 1600px;
-  margin: 0 auto;
-  padding-bottom: 3%;
+  margin-bottom: 15px;
 }
 
 .portfolio-item {
   position: relative;
   overflow: hidden;
   background: #f5f5f5;
-  border-radius: 4px;
+  border-radius: 8px;
   width: 100%;
 }
 
@@ -210,9 +311,9 @@ body {
 }
 
 .portfolio-item.standard {
-  aspect-ratio: 2/1;
-  
-  max-height: 390px;
+  aspect-ratio: 16/9;
+  max-width: 1080px;
+  max-height: 720px;
 }
 
 .portfolio-item video {
@@ -243,24 +344,42 @@ body {
   padding-right: 20px;
 }
 
+@media (max-width: 1280px) {
+  .footer {
+    padding: 60px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: black;
+    color: white;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 8.7%;
+    padding-right: 8.7%;
+  }
+}
+
 .copyright {
   margin-right: 7%;
-  font-family: "Metric Light";
+  font-family: "Archia Light";
+  font-weight: 400;
 }
 
 @media (max-width: 1280px) {
   .copyright {
     margin-right: 0.1%;
     font-size: 15px;
-    font-family: "Metric Light";
+    font-family: "Archia Regular";
+    font-weight: 400;
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 780px) {
   .copyright {
     margin-right: 0.1%;
-    font-size: 12px;
-    font-family: "Metric Light";
+    font-size: 9px;
+    font-family: "Archia Regular";
+    font-weight: 400;
   }
 }
 
@@ -268,29 +387,33 @@ body {
   display: flex;
   gap: 15px;
   margin-left: 7%;
-  font-family: "Metric Light";
+  font-family: "Archia Light";
+  font-weight: 400;
 }
 
 @media (max-width: 1280px) {
   .social {
     margin-left: 0.1%;
     font-size: 15px;
-    font-family: "Metric Light";
+    font-family: "Archia Light";
+    font-weight: 400;
   }
 }
 
 @media (max-width: 767px) {
   .social {
     margin-left: 0.1%;
-    font-size: 12px;
-    font-family: "Metric Light";
+    font-size: 9px;
+    font-family: "Archia Light";
+    font-weight: 400;
   }
 }
-
 
 .social a {
   color: white;
   text-decoration: none;
+  font-family: "Archia Light";
+  font-weight: 400;
 }
 
 /* Tablet adjustments */
@@ -301,9 +424,13 @@ body {
 
   .portfolio-container,
   .portfolio-grid,
-  .portfolio-section,
-  .portfolio-additional {
+  .portfolio-section {
     gap: 10px;
+  }
+
+  .portfolio-additional {
+    row-gap: 10px;
+    column-gap: 20px;
   }
 
   .header {
@@ -312,26 +439,9 @@ body {
 
   .header,
   .portfolio-container {
-    width: 100%;
+    width: 86%;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .heading-p {
-    padding: 30px 0;
-    font-size: 1.2rem;
-    line-height: 1.3;
-    font-weight: 250;
-  }
-
-  .copyright {
-    margin-left: 0.1%;
-    font-size: 15px;
-  }
-
-  .social {
-    margin-right: 0.1%;
-    font-size: 15px;
   }
 }
 
@@ -341,7 +451,7 @@ body {
   .portfolio-grid,
   .portfolio-section,
   .portfolio-additional {
-    gap: 8px;
+    gap: 10px;
   }
 
   .footer {
@@ -349,6 +459,24 @@ body {
     margin-right: -10px;
     padding-left: 10px;
     padding-right: 10px;
+  }
+
+  .header,
+  .portfolio-container {
+    width: 100%;
+    margin-left: 0.1%;
+    margin-right: 0.1%;
+  }
+
+  .portfolio-container {
+    width: 100%;
+    margin-left: 0.1%;
+    margin-right: 0.1%;
+
+  }
+
+  .portfolio-additional {
+    margin-bottom: 1px;
   }
 }
 
@@ -359,17 +487,13 @@ body {
 }
 
 .section-title {
-  font-size: 1.7rem;
-  font-weight: 250;
-  font-family: "Metric Light";
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 .profile-content p {
   margin-bottom: 1.5rem;
   line-height: 1.6;
-  font-size: 1.2rem;
-  font-weight: 250;
-  font-family: "Metric Light";
 }
 
 .get-in-touch {
@@ -377,24 +501,7 @@ body {
   text-decoration: none;
   color: #333;
   margin-top: 1rem;
-  font-size: 1.2rem;
   font-family: "Metric Light";
-}
-.mail2bc {
-  display: inline-block;
-  text-decoration: none;
-  color: #333;
-  margin-top: 1rem;
-  font-size: 1.2rem;
-  font-weight: 250;
-  font-family: "Metric Light";
-}
-
-@media (max-width: 767px) {
-  .mail2bc {
-    font-size: 1rem;
-    font-family: "Metric Light";
-  }
 }
 
 .services-list {
@@ -405,19 +512,19 @@ body {
 
 .services-list li {
   margin-bottom: 0.8rem;
-  font-size: 1.2rem;
-  font-weight: 250;
+  font-size: 1.1rem;
   font-family: "Metric Light";
 }
 
 /* Desktop Layout (above 768px) */
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .about-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     /* Creates two equal columns */
     gap: 5px;
     /* Added 5px gap */
+    font-family: "Metric Light";
   }
 
   .section-title {
@@ -429,9 +536,10 @@ body {
   .profile-content,
   .services-list {
     grid-column: 2;
-
+    /* Places content in the second column */
     max-width: 100%;
     padding-left: 5px;
+    /* Added 5px padding to content */
     font-family: "Metric Light";
   }
 }
@@ -446,14 +554,11 @@ body {
 
   .profile-content p {
     margin-bottom: 1rem;
-    font-size: 1rem;
-    font-weight: 250;
     font-family: "Metric Light";
   }
 
   .services-list li {
     font-size: 1rem;
-    font-weight: 250;
     font-family: "Metric Light";
   }
 }
@@ -502,18 +607,36 @@ body {
 
 /* Video section styles */
 .video-section {
-  margin: 60px 0;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .video-container {
   grid-column: 1 / span 2;
-  /* Changed: spans both columns */
   width: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: 4px;
-  margin-top: 40px;
-  /* Added: creates space below the title */
+  border-radius: 0px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+@media (min-width: 1280px) {
+  .video-container {
+    grid-column: 1 / span 2;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+}
+
+.video-section {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .video-container video {
@@ -531,48 +654,79 @@ body {
 }
 
 .heading-p {
-  padding: 40px 0;
+  padding: 10px 0;
   /* Desktop padding */
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   /* Reduced from 2.5rem */
   line-height: 1.3;
   max-width: 850px;
+  padding-top: 5%;
+  font-size: 1.7rem;
   font-weight: 250;
   font-family: "Metric Light";
 }
 
 /* Tablet adjustments */
-@media (max-width: 1600px) {
+@media (max-width: 1280px) {
   .heading-p {
-    padding: 30px 0;
-    /* Tablet padding */
+    padding: 10px 0;
     font-size: 1.2rem;
-    /* Reduced from 2rem */
-    line-height: 1.3;
     font-weight: 250;
+    font-family: "Metric Light";
   }
 }
 
 /* Mobile adjustments */
 @media (max-width: 767px) {
   .heading-p {
-    padding: 20px 0;
+    padding: 5px 0;
+    /* Mobile padding */
+    font-size: 20px;
+    /* Reduced from 1.5rem */
+    font-size: 1.2rem;
+    font-weight: 250;
+    font-family: "Metric Light";
+  }
+}
+.heading-p1 {
+  padding: 10px 0;
+  font-size: 1.7rem;
+  line-height: 1.3;
+  max-width: 850px;
+  padding-top: 0.5%;
+  font-weight: 250;
+  font-family: "Metric Light";
+}
+
+/* Tablet adjustments */
+@media (max-width: 1280px) {
+  .heading-p1 {
+    padding: 10px 0;
+    font-size: 1.2rem;
+    font-weight: 250;
+    font-family: "Metric Light";
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  .heading-p1 {
+    padding: 5px 0;
     /* Mobile padding */
     font-size: 1.2rem;
     /* Reduced from 1.5rem */
-    line-height: 1.3;
     font-weight: 250;
+    font-family: "Metric Light";
   }
 }
 
 .grey-box {
   width: 100%;
   height: 100%;
-  background-color: #e0e0e0;
+  background-color: #1f2937;
   position: absolute;
   top: 0;
   left: 0;
-  border-radius: 4px;
 }
 
 .video-container {
@@ -582,15 +736,105 @@ body {
   overflow: hidden;
 }
 
-.portfolio-item.standard {
-  position: relative;
-  padding-top: 100%; /* 1:1 Aspect Ratio */
-  border-radius: 4px;
-}
-
-/* Ensure containers maintain proper positioning */
-.portfolio-item,
+/* Ensure container maintains proper positioning */
 .video-container {
   position: relative;
   overflow: hidden;
+}
+
+.grey-box {
+  width: 100%;
+  height: 100%;
+  background-color: #1f2937;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.portfolio-item a {
+  text-decoration: none;
+}
+
+.portfolio-tittle {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 15px 15px;
+  background-color: #FFFFFF99;
+  text-align: left;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1;
+  font-family: "Archia Bold";
+  font-weight: 700;
+  color: #000000;
+}
+
+.portfolio-item:hover .portfolio-tittle {
+  opacity: 1; /* Show on hover */
+}
+
+
+
+/* About Me Content */
+
+.container {
+  max-width: 1600px;
+ 
+}
+h2 {
+  color: #333;
+  font-family: "Archia Bold";
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+.about {
+  width: 49%;
+}
+.services-contact {
+  width: 49%;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+ul li {
+  margin: 1% 0%;
+  font-family: "Metric Light";
+  font-size: 20px;
+  font-weight: 400;
+}
+.contact p {
+  margin: 5px 0;
+}
+
+.paragraph{
+  margin: 3% 0%;
+  font-family: "Metric Light";
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.contactab{
+  color: #333;
+  font-family: "Archia Bold";
+  font-weight: 700;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.contactnm{
+  font-family: "Metric Light";
+  font-weight: 400;
+  font-size: 20px;
+}
+.contactnm2{
+  font-family: "Metric Light";
+  font-weight: 400;
+  font-size: 20px;
+  
 }
