@@ -392,12 +392,13 @@ body::after {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 780px) {
   .social {
     margin-left: 0.1%;
     font-size: 9px;
     font-family: "Archia Light";
     font-weight: 400;
+    gap: 8px;
   }
 }
 
